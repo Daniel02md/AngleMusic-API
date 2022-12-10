@@ -1,0 +1,16 @@
+name: remote ssh command
+on: push
+jobs:
+
+  build:
+    name: Deploying
+    runs-on: ubuntu-latest
+    steps: 
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
+        script: cd ~/AngleMusic-API/ && gh repo sync && {{ secrets.RESTART_SERVICE }}

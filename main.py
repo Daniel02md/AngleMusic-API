@@ -43,5 +43,3 @@ async def directLink():
     link = request.args.get('url')
     directLink = Extractor.getDirectURL(link)
     return Response(response=directLink, mimetype='application/json')
-
-app.run()
