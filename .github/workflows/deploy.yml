@@ -17,4 +17,4 @@ jobs:
           cd ~/AngleMusic-API 
           gh repo sync
           pkill -f gunicorn
-          python3 -m gunicorn main:app --daemon
+          sudo gunicorn main:app --daemon
