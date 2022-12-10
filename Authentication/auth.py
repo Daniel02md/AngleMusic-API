@@ -1,7 +1,8 @@
 from googleapiclient.discovery import build
 
 class Auth:
-    def __init__(self, keyAuth = 'AIzaSyCTY4ExbPCJrOH-1tOSAZr_6cbiyJzU6iw'):
+    
+    def __init__(self, keyAuth = 'AIzaSyA33m-lnUKd5bHdVm7Kvjw2C-GenJMpja4'):
         #key 1: AIzaSyCTY4ExbPCJrOH-1tOSAZr_6cbiyJzU6iw
         #key 2: AIzaSyA33m-lnUKd5bHdVm7Kvjw2C-GenJMpja4
         self.__SERVICE_NAME = 'youtube'
