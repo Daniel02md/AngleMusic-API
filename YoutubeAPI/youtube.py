@@ -1,4 +1,5 @@
 from json import dumps
+from isodate import parse_duration
 class YoutubeMusic:
     __MUSIC_CATEGORY_ID = 10
     
@@ -42,7 +43,7 @@ class YoutubeMusic:
             newResult = result['snippet']
             newResult['videoUrl'] = f"{YT_BASE_URL}{result['id']['videoId']}"
             newResult['videoId'] = result['id']['videoId']
-            newResult['duration'] = duration
+            newResult['duration'] = int(parse_duration(duration).total_seconds())
 
             newSearchResultList.append(newResult)
         return dumps(newSearchResultList)
