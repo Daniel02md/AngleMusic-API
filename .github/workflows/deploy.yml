@@ -1,7 +1,7 @@
 name: remote ssh command
 on: push
 jobs:
-
+ 
   build:
     name: Deploying
     runs-on: ubuntu-latest
