@@ -1,0 +1,9 @@
+pytube
+gunicorn
+flask
+flask[async]
+flask_cors
+google-api-python-client
+google-auth>=1.19.0
+google-auth-httplib2>=0.1.0
+google-api-core >= 1.31.5
