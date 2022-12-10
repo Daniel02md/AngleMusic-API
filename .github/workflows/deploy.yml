@@ -16,5 +16,4 @@ jobs:
         script: | 
           cd ~/AngleMusic-API 
           gh repo sync
-          pkill -f gunicorn
-          sudo gunicorn main:app --daemon
+          ./restart-server.sh
