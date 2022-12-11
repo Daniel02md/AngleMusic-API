@@ -14,6 +14,7 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: | 
-          cd ~/AngleMusic-API 
+          cd ~/AngleMusic-API
+          git stash
           gh repo sync
           ./restart-server.sh
