@@ -1,7 +1,5 @@
-from pytube import YouTube
-from pytube.exceptions import LiveStreamError
 from json import dumps
-
+from youtube_dl.YoutubeDL import YoutubeDL
 
 
 class Extractor:
@@ -11,15 +9,15 @@ class Extractor:
     @staticmethod
     def getDirectURL(uriVideo) -> str:
         directLink = {}
-        try:
-            url = YouTube(uriVideo).streams.get_audio_only().url
-        except LiveStreamError:
-            directLink['error'] = {'errorMessage': 'The selected music is a LiveStream.'}
-        except Exception as e:
-            directLink['error'] = {'errorMessage': f'{repr(e)}'}
+        yt_opts = {
+            'format': '140/bestaudio',
+            'quiet': True
+        }
+        yt_dl = YoutubeDL(yt_opts)
+        arrayformats = yt_dl.extract_info(uriVideo.replace('"', ''), download=False)['formats']
+        for item in arrayformats:
+            if item['format_id'] == '140':
+                directLink['url'] = item['url']
+                break
 
-        else:
-            directLink['url'] = url
-            
-        finally: 
-            return dumps(directLink)
+        return dumps(directLink)

@@ -1,4 +1,5 @@
-pytube
+youtube-dl
+isodate
 gunicorn
 flask
 flask[async]
