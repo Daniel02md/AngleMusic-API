@@ -12,7 +12,6 @@ class YoutubeMusic:
         self.service = self.creds
         request = self.service.search().list(
                 part = 'snippet',
-                order = 'viewCount',
                 q = q,
                 type = 'video',
                 maxResults = maxResults,
