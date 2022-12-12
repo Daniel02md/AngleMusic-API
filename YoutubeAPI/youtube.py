@@ -13,7 +13,6 @@ class YoutubeMusic:
         request = self.service.search().list(
                 part = 'snippet',
                 q = q,
-                videoSyndicated = 'true',
                 type = 'video',
                 maxResults = maxResults,
                 videoCategoryId = self.__MUSIC_CATEGORY_ID
