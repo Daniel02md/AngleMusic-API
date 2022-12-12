@@ -39,7 +39,6 @@ class YoutubeMusic:
             
             duration = duration['items'][0]['contentDetails']['duration']
             duration = int(parse_duration(duration).total_seconds())
-            duration = str(timedelta(seconds=duration))
             newResult = {} 
             newResult = result['snippet']
             newResult['videoUrl'] = f"{YT_BASE_URL}{result['id']['videoId']}"
