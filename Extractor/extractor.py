@@ -1,6 +1,7 @@
 from json import dumps
 from youtube_dl.YoutubeDL import YoutubeDL
 import youtube_dl.utils
+import requests
 
 class Extractor:
     def __init__(self) -> None:
@@ -14,7 +15,6 @@ class Extractor:
         }   
         s = requests.Session()
         res = s.post('https://snapinsta.io/api/ajaxSearch', data=payloads).json()
-        print(res)
         url = 'https://he61.aadika.xyz/download'+"/"+\
                 res['vid']+"/"+\
                 res['links']['mp3']['3']['f']+"/"+\
