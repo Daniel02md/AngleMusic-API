@@ -7,19 +7,19 @@ class Extractor:
         pass
 
     @staticmethod
-    def getDirectURL(uriVideo) -> str:
-        directLink = {}
-        yt_opts = {
-            'format': '140/bestaudio',
-            'quiet': True
+    def getDirectURL(uriVideo) -> dict:
+        payloads = {
+            'q': uriVideo,
+            'vt' :'mp3'
         }   
-        youtube_dl.utils.std_headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+        s = requests.Session()
+        res = s.post('https://snapinsta.io/api/ajaxSearch', data=payloads).json()
+        print(res)
+        url = 'https://he61.aadika.xyz/download'+"/"+\
+                res['vid']+"/"+\
+                res['links']['mp3']['3']['f']+"/"+\
+                res['links']['mp3']['3']['k']+"/"+\
+                res['timeExpires']+"/"+\
+                res['token']+"/1?f=SnapInsta.io"
 
-        yt_dl = YoutubeDL(yt_opts)
-        arrayformats = yt_dl.extract_info(uriVideo.replace('"', ''), download=False)['formats']
-        for item in arrayformats:
-            if item['format_id'] == '140':
-                directLink['url'] = item['url']
-                break
-
-        return dumps(directLink)
+        return dumps({"url": url})
